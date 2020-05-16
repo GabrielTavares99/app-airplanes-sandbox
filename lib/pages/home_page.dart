@@ -6,8 +6,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            "Baby Barbershop",
-          )),
+        "Baby Barbershop",
+      )),
       body: _body(),
     );
   }
@@ -15,9 +15,20 @@ class HomePage extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.green,
-      child: Center(
-        child: _welcomeMessageText(),
+      child: SizedBox.expand(
+        child: _img(),
       ),
+    );
+  }
+
+  _img() {
+//    return Image.network(
+//        "https://i.pinimg.com/564x/26/9e/71/269e7102823b1cdd4873a2db032699c0.jpg");
+    return Image.asset(
+      "assets/images/hair/hair1.jpg",
+      width: 300,
+      height: 300,
+      fit: BoxFit.contain,
     );
   }
 
