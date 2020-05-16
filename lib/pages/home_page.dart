@@ -14,9 +14,29 @@ class HomePage extends StatelessWidget {
 
   _body() {
     return Container(
-      color: Colors.green,
-      child: SizedBox.expand(
-        child: _img(),
+      color: Colors.grey,
+      child: Center(
+        child: _button(),
+      ),
+    );
+  }
+
+  _onClickOk() {
+    print("OK FROM METHOD");
+  }
+
+  _button() {
+    return RaisedButton(
+      onPressed: () {
+        _onClickOk();
+      },
+      color: Colors.lightBlue,
+      child: Text(
+        "THIAGO",
+        style: TextStyle(
+          fontSize: 30,
+          color: Colors.amber,
+        ),
       ),
     );
   }
