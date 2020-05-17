@@ -9,6 +9,18 @@ class ListViewPage extends StatelessWidget {
         title: Text(
           "Airplanes: list view page",
         ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                print("LIST");
+              }),
+          IconButton(
+              icon: Icon(Icons.grid_on),
+              onPressed: () {
+                print("GRID");
+              }),
+        ],
       ),
       body: _body(),
     );
