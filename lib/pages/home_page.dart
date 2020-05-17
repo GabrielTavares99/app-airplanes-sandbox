@@ -15,53 +15,58 @@ class HomePage extends StatelessWidget {
   _body(context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      color: Colors.grey,
-      width: size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _welcomeMessageText(),
-          _pageView(),
-          _functionButtons()
-        ],
+      padding: const EdgeInsets.all(16),
+      color: Colors.yellow,
+      child: Container(
+        color: Colors.green,
+        width: size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _welcomeMessageText(),
+            _pageView(),
+            _functionButtons()
+          ],
+        ),
       ),
     );
   }
 
   Container _pageView() {
     return Container(
-          height: 300,
-          child: PageView(
-            children: <Widget>[
-              _img(1),
-              _img(2),
-              _img(3),
-            ],
-          ),
-        );
+      height: 300,
+      margin: EdgeInsets.only(top: 10, bottom: 10),
+      child: PageView(
+        children: <Widget>[
+          _img(1),
+          _img(2),
+          _img(3),
+        ],
+      ),
+    );
   }
 
   Column _functionButtons() {
     return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _button("ListView"),
-                _button("Page 2"),
-                _button("Page 3"),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _button("Snack"),
-                _button("Dialog"),
-                _button("Toast"),
-              ],
-            )
+            _button("ListView"),
+            _button("Page 2"),
+            _button("Page 3"),
           ],
-        );
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _button("Snack"),
+            _button("Dialog"),
+            _button("Toast"),
+          ],
+        )
+      ],
+    );
   }
 
   _columnExample() {
@@ -114,7 +119,7 @@ class HomePage extends StatelessWidget {
 //    return Image.network(
 //        "https://i.pinimg.com/564x/26/9e/71/269e7102823b1cdd4873a2db032699c0.jpg");
     return Image.asset(
-      "assets/images/hair/airplane"+num.toString()+".jpg",
+      "assets/images/hair/airplane" + num.toString() + ".jpg",
       width: 300,
       height: 300,
       fit: BoxFit.contain,
@@ -123,13 +128,13 @@ class HomePage extends StatelessWidget {
 
   _welcomeMessageText() {
     return Text(
-      "Bem vindo!",
+      "Airplanes!",
       style: TextStyle(
         fontSize: 30,
-        color: Colors.red,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontStyle: FontStyle.italic,
-        decoration: TextDecoration.underline,
+//        fontStyle: FontStyle.italic,
+        decoration: TextDecoration.none,
         decorationColor: Colors.amber,
         decorationStyle: TextDecorationStyle.wavy,
       ),

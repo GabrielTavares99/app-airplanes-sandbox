@@ -12,7 +12,7 @@ class BarberShop extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //remove debugger banner
       theme: ThemeData(
-        primaryColor: Colors.red,
+        primaryColor: Colors.black,
       ),
       home: HomePage(),
     );
