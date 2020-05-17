@@ -1,3 +1,4 @@
+import 'package:app_barbershop/pages/second_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,24 +15,16 @@ class HomePage extends StatelessWidget {
 
   _body(context) {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-//      color: Colors.yellow,
-      child: Container(
-        color: Colors.green,
-        width: size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _welcomeMessageText(),
-            _pageView(),
-            _functionButtons(),
-            _functionButtons(),
-            _functionButtons(),
-            _functionButtons(),
-            _functionButtons(),
-          ],
-        ),
+    return Container(
+      color: Colors.green,
+      width: size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _welcomeMessageText(),
+          _pageView(),
+          _functionButtons(context),
+        ],
       ),
     );
   }
@@ -50,63 +43,66 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column _functionButtons() {
+  Column _functionButtons(BuildContext context) {
     return Column(
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button("ListView"),
-            _button("Page 2"),
-            _button("Page 3"),
+            _button(context, "ListView"),
+            _button(context, "Page 2"),
+            _button(context, "Page 3"),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button("Snack"),
-            _button("Dialog"),
-            _button("Toast"),
+            _button(context, "Snack"),
+            _button(context, "Dialog"),
+            _button(context, "Toast"),
           ],
         )
       ],
     );
   }
 
-  _columnExample() {
+  _columnExample(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        _button("Example"),
-        _button("Example"),
-        _button("Example"),
+        _button(context, "Example"),
+        _button(context, "Example"),
+        _button(context, "Example"),
       ],
     );
   }
 
-  _rowExample() {
+  _rowExample(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        _button("Example"),
-        _button("Example"),
-        _button("Example"),
+        _button(context, "Example"),
+        _button(context, "Example"),
+        _button(context, "Example"),
       ],
     );
   }
 
-  _onClickOk() {
+  _onClickOk(BuildContext context) {
     print("OK FROM METHOD");
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return SecondPage();
+    }));
   }
 
-  _button(String text) {
+  _button(BuildContext context, String text) {
     return RaisedButton(
       onPressed: () {
-        _onClickOk();
+        _onClickOk(context);
       },
       color: Colors.lightBlue,
       child: Text(
