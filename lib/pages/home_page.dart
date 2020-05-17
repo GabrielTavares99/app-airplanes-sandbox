@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        "Barbershop",
+        "Airplanes",
       )),
       body: _body(context),
     );
@@ -16,9 +16,39 @@ class HomePage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       color: Colors.grey,
-//      height: size.height,
-      child: _rowExample(),
+      width: size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _welcomeMessageText(),
+          _img(),
+          _functionButtons()
+        ],
+      ),
     );
+  }
+
+  Column _functionButtons() {
+    return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button("ListView"),
+                _button("Page 2"),
+                _button("Page 3"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button("Snack"),
+                _button("Dialog"),
+                _button("Toast"),
+              ],
+            )
+          ],
+        );
   }
 
   _columnExample() {
@@ -26,7 +56,11 @@ class HomePage extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[_button(), _button(), _button()],
+      children: <Widget>[
+        _button("Example"),
+        _button("Example"),
+        _button("Example"),
+      ],
     );
   }
 
@@ -35,7 +69,11 @@ class HomePage extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[_button(), _button(), _button()],
+      children: <Widget>[
+        _button("Example"),
+        _button("Example"),
+        _button("Example"),
+      ],
     );
   }
 
@@ -43,16 +81,16 @@ class HomePage extends StatelessWidget {
     print("OK FROM METHOD");
   }
 
-  _button() {
+  _button(String text) {
     return RaisedButton(
       onPressed: () {
         _onClickOk();
       },
       color: Colors.lightBlue,
       child: Text(
-        "OK",
+        text,
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 20,
           color: Colors.amber,
         ),
       ),
