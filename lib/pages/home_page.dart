@@ -21,11 +21,24 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           _welcomeMessageText(),
-          _img(),
+          _pageView(),
           _functionButtons()
         ],
       ),
     );
+  }
+
+  Container _pageView() {
+    return Container(
+          height: 300,
+          child: PageView(
+            children: <Widget>[
+              _img(1),
+              _img(2),
+              _img(3),
+            ],
+          ),
+        );
   }
 
   Column _functionButtons() {
@@ -97,11 +110,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _img() {
+  _img(int num) {
 //    return Image.network(
 //        "https://i.pinimg.com/564x/26/9e/71/269e7102823b1cdd4873a2db032699c0.jpg");
     return Image.asset(
-      "assets/images/hair/hair1.jpg",
+      "assets/images/hair/airplane"+num.toString()+".jpg",
       width: 300,
       height: 300,
       fit: BoxFit.contain,
