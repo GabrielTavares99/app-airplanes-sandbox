@@ -2,13 +2,13 @@ import 'package:app_barbershop/utils/nav_util.dart';
 import 'package:app_barbershop/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 
-class SecondPage extends StatelessWidget {
+class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Airplanes: second page",
+          "Airplanes: third page",
         ),
       ),
       body: _body(context),
@@ -28,7 +28,7 @@ class SecondPage extends StatelessWidget {
 
   _backButton(BuildContext context, String text) {
     return DefaultButton(
-      "BACK",
+      "Back",
       onPressed: () => _onClickBackButton(context),
     );
   }

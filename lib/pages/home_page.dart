@@ -1,4 +1,8 @@
+import 'package:app_barbershop/pages/list_view_page.dart';
 import 'package:app_barbershop/pages/second_page.dart';
+import 'package:app_barbershop/pages/third_page.dart';
+import 'package:app_barbershop/utils/nav_util.dart';
+import 'package:app_barbershop/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -49,75 +53,33 @@ class HomePage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button(context, "ListView"),
-            _button(context, "Page 2"),
-            _button(context, "Page 3"),
+            DefaultButton(
+              "ListView",
+              onPressed: () => _onClickNavigator(context, ListViewPage()),
+            ),
+            DefaultButton(
+              "Page 2",
+              onPressed: () => _onClickNavigator(context, SecondPage()),
+            ),
+            DefaultButton(
+              "Page 3",
+              onPressed: () => _onClickNavigator(context, ThirdPage()),
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button(context, "Snack"),
-            _button(context, "Dialog"),
-            _button(context, "Toast"),
+            DefaultButton("Snack", onPressed: () => _onClickSnack()),
+            DefaultButton("Dialog", onPressed: () => _onClickDialog()),
+            DefaultButton("Toast", onPressed: () => _onClickToast()),
           ],
         )
       ],
     );
   }
 
-  _columnExample(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        _button(context, "Example"),
-        _button(context, "Example"),
-        _button(context, "Example"),
-      ],
-    );
-  }
-
-  _rowExample(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        _button(context, "Example"),
-        _button(context, "Example"),
-        _button(context, "Example"),
-      ],
-    );
-  }
-
-  _onClickOk(BuildContext context) {
-    print("OK FROM METHOD");
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return SecondPage();
-    }));
-  }
-
-  _button(BuildContext context, String text) {
-    return RaisedButton(
-      onPressed: () {
-        _onClickOk(context);
-      },
-      color: Colors.lightBlue,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.amber,
-        ),
-      ),
-    );
-  }
-
   _img(int num) {
-//    return Image.network(
-//        "https://i.pinimg.com/564x/26/9e/71/269e7102823b1cdd4873a2db032699c0.jpg");
     return Image.asset(
       "assets/images/hair/airplane" + num.toString() + ".jpg",
       width: 300,
@@ -139,5 +101,23 @@ class HomePage extends StatelessWidget {
         decorationStyle: TextDecorationStyle.wavy,
       ),
     );
+  }
+
+  _onClickSnack() {
+    print("snake");
+  }
+
+  _onClickDialog() {
+    print("DIALOG");
+  }
+
+  _onClickToast() {
+    print("TOAST");
+  }
+
+  _onClickNavigator(BuildContext context, Widget page) async {
+    print("XUXU");
+    String s = await push(context, page);
+    print(">> $s");
   }
 }
