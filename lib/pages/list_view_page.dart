@@ -16,7 +16,7 @@ class ListViewPage extends StatelessWidget {
 
   _body() {
     List<Airplane> images = [
-      Airplane("KC", "assets/images/hair/airplane4.jpg"),
+      Airplane("KC 390", "assets/images/hair/airplane4.jpg"),
       Airplane("A380", "assets/images/hair/airplane1.jpg"),
       Airplane("AN 225", "assets/images/hair/airplane2.jpg"),
       Airplane("B747", "assets/images/hair/airplane3.jpg"),
@@ -27,7 +27,30 @@ class ListViewPage extends StatelessWidget {
         itemExtent: 250,
         itemBuilder: (BuildContext context, int index) {
           Airplane airplane = images[index];
-          return _img(airplane.photoUrl);
+          return Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              _img(airplane.photoUrl),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: EdgeInsets.all(12),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    airplane.name,
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
         });
   }
 
