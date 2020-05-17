@@ -6,18 +6,36 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        "Baby Barbershop",
+        "Barbershop",
       )),
-      body: _body(),
+      body: _body(context),
     );
   }
 
-  _body() {
+  _body(context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       color: Colors.grey,
-      child: Center(
-        child: _button(),
-      ),
+//      height: size.height,
+      child: _rowExample(),
+    );
+  }
+
+  _columnExample() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[_button(), _button(), _button()],
+    );
+  }
+
+  _rowExample() {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[_button(), _button(), _button()],
     );
   }
 
@@ -32,7 +50,7 @@ class HomePage extends StatelessWidget {
       },
       color: Colors.lightBlue,
       child: Text(
-        "THIAGO",
+        "OK",
         style: TextStyle(
           fontSize: 30,
           color: Colors.amber,
