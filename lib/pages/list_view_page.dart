@@ -14,20 +14,24 @@ class ListViewPage extends StatelessWidget {
   }
 
   _body() {
-    return ListView(
-      itemExtent: 300,
-      children: <Widget>[
-        _img(4),
-        _img(2),
-        _img(3),
-        _img(1),
-      ],
-    );
+    List<Image> images = [
+      _img("assets/images/hair/airplane4.jpg"),
+      _img("assets/images/hair/airplane1.jpg"),
+      _img("assets/images/hair/airplane2.jpg"),
+      _img("assets/images/hair/airplane3.jpg"),
+    ];
+
+    return ListView.builder(
+        itemCount: images.length,
+        itemExtent: 250,
+        itemBuilder: (BuildContext context, int index) {
+          return images[index];
+        });
   }
 
-  _img(int num) {
+  _img(String path) {
     return Image.asset(
-      "assets/images/hair/airplane" + num.toString() + ".jpg",
+      path,
       fit: BoxFit.fill,
     );
   }
