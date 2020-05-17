@@ -33,12 +33,13 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _pageView() {
+  _pageView() {
     return Container(
       height: 300,
       margin: EdgeInsets.only(top: 10, bottom: 10),
       child: PageView(
         children: <Widget>[
+          _img(4),
           _img(1),
           _img(2),
           _img(3),
