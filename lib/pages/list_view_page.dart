@@ -1,3 +1,4 @@
+import 'package:app_barbershop/domain/airplane.dart';
 import 'package:flutter/material.dart';
 
 class ListViewPage extends StatelessWidget {
@@ -14,18 +15,19 @@ class ListViewPage extends StatelessWidget {
   }
 
   _body() {
-    List<Image> images = [
-      _img("assets/images/hair/airplane4.jpg"),
-      _img("assets/images/hair/airplane1.jpg"),
-      _img("assets/images/hair/airplane2.jpg"),
-      _img("assets/images/hair/airplane3.jpg"),
+    List<Airplane> images = [
+      Airplane("KC", "assets/images/hair/airplane4.jpg"),
+      Airplane("A380", "assets/images/hair/airplane1.jpg"),
+      Airplane("AN 225", "assets/images/hair/airplane2.jpg"),
+      Airplane("B747", "assets/images/hair/airplane3.jpg"),
     ];
 
     return ListView.builder(
         itemCount: images.length,
         itemExtent: 250,
         itemBuilder: (BuildContext context, int index) {
-          return images[index];
+          Airplane airplane = images[index];
+          return _img(airplane.photoUrl);
         });
   }
 
