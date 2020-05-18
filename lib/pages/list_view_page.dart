@@ -1,4 +1,6 @@
 import 'package:app_barbershop/domain/airplane.dart';
+import 'package:app_barbershop/pages/airplane_detail.dart';
+import 'package:app_barbershop/utils/nav_util.dart';
 import 'package:flutter/material.dart';
 
 class ListViewPage extends StatefulWidget {
@@ -20,23 +22,31 @@ class _ListViewPageState extends State<ListViewPage> {
           IconButton(
               icon: Icon(Icons.list),
               onPressed: () {
-                print("LIST");
-                setState(() {
-                  _gridView = false;
-                });
+                _showListDisplay();
               }),
           IconButton(
               icon: Icon(Icons.grid_on),
               onPressed: () {
-                print("GRID");
-                setState(() {
-                  _gridView = true;
-                });
+                _showGridDisplay();
               }),
         ],
       ),
       body: _body(),
     );
+  }
+
+  void _showListDisplay() {
+    print("LIST");
+    return setState(() {
+      _gridView = false;
+    });
+  }
+
+  void _showGridDisplay() {
+    print("GRID");
+    return setState(() {
+      _gridView = true;
+    });
   }
 
   _body() {
@@ -66,30 +76,35 @@ class _ListViewPageState extends State<ListViewPage> {
         });
   }
 
-  Stack _buildItemView(Airplane airplane) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        _img(airplane.photoUrl),
-        Align(
-          alignment: Alignment.bottomLeft,
-          child: Container(
-            margin: EdgeInsets.all(12),
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              airplane.name,
-              style: TextStyle(
-                fontSize: 26,
-                color: Colors.white,
+  _buildItemView(Airplane airplane) {
+    return GestureDetector(
+      onTap: () {
+        push(context, AirplaneDetail(airplane));
+      },
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          _img(airplane.photoUrl),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Container(
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                airplane.name,
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
