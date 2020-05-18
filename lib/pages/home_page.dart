@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           _welcomeMessageText(),
           _pageView(),
-          _functionButtons(context),
+          _functionButtons(),
         ],
       ),
     );
@@ -48,36 +48,38 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column _functionButtons(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            DefaultButton(
-              "ListView",
-              onPressed: () => _onClickNavigator(context, ListViewPage()),
-            ),
-            DefaultButton(
-              "Page 2",
-              onPressed: () => _onClickNavigator(context, SecondPage()),
-            ),
-            DefaultButton(
-              "Page 3",
-              onPressed: () => _onClickNavigator(context, ThirdPage()),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            DefaultButton("Snack", onPressed: () => _onClickSnack()),
-            DefaultButton("Dialog", onPressed: () => _onClickDialog()),
-            DefaultButton("Toast", onPressed: () => _onClickToast()),
-          ],
-        )
-      ],
-    );
+  _functionButtons() {
+    return Builder(builder: (context) {
+      return Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              DefaultButton(
+                "ListView",
+                onPressed: () => _onClickNavigator(context, ListViewPage()),
+              ),
+              DefaultButton(
+                "Page 2",
+                onPressed: () => _onClickNavigator(context, SecondPage()),
+              ),
+              DefaultButton(
+                "Page 3",
+                onPressed: () => _onClickNavigator(context, ThirdPage()),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              DefaultButton("Snack", onPressed: () => _onClickSnack(context)),
+              DefaultButton("Dialog", onPressed: () => _onClickDialog()),
+              DefaultButton("Toast", onPressed: () => _onClickToast()),
+            ],
+          )
+        ],
+      );
+    });
   }
 
   _img(int num) {
@@ -104,8 +106,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _onClickSnack() {
-    print("snake");
+  _onClickSnack(BuildContext context) {
+    print("SNACK");
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text("SNACK NOTIFICATION"),
+      action: SnackBarAction(
+        textColor: Colors.lightGreen,
+        label: "OK",
+        onPressed: () {
+          print("CLOSED SNACK");
+        },
+      ),
+    ));
   }
 
   _onClickDialog() {
