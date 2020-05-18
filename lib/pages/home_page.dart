@@ -4,6 +4,7 @@ import 'package:app_barbershop/pages/third_page.dart';
 import 'package:app_barbershop/utils/nav_util.dart';
 import 'package:app_barbershop/widgets/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -153,7 +154,14 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickToast() {
-    print("TOAST");
+    Fluttertoast.showToast(
+      msg: "Toast is very nice",
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIosWeb: 5,
+      backgroundColor: Colors.pink,
+      gravity: ToastGravity.CENTER,
+      textColor: Colors.black,
+    );
   }
 
   _onClickNavigator(BuildContext context, Widget page) async {
