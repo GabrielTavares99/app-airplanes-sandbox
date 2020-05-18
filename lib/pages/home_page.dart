@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               DefaultButton("Snack", onPressed: () => _onClickSnack(context)),
-              DefaultButton("Dialog", onPressed: () => _onClickDialog()),
+              DefaultButton("Dialog", onPressed: () => _onClickDialog(context)),
               DefaultButton("Toast", onPressed: () => _onClickToast()),
             ],
           )
@@ -120,8 +120,36 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  _onClickDialog() {
-    print("DIALOG");
+  _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false, // NOT CLOSE CLICKING OUT
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            // NOT CLOSE CLICKING IN THE ARROW BACK
+            child: AlertDialog(
+              title: Text(
+                "Airplane Dialog",
+                style: TextStyle(color: Colors.pink),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                FlatButton(
+                  child: Text("CANCEL"),
+                  onPressed: () {
+                    print("XUX");
+                  },
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   _onClickToast() {
