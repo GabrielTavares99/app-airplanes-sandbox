@@ -1,3 +1,4 @@
+import 'package:app_barbershop/pages/drawer_list.dart';
 import 'package:app_barbershop/pages/list_view_page.dart';
 import 'package:app_barbershop/pages/second_page.dart';
 import 'package:app_barbershop/pages/third_page.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
         "Airplanes",
       )),
       body: _body(context),
-      drawer: Drawer(),
+      drawer: DrawerList(),
     );
   }
 
