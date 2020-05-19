@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
         "Airplanes",
       )),
       body: _body(context),
+      drawer: Drawer(),
     );
   }
 
