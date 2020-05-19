@@ -1,5 +1,5 @@
-import 'package:app_barbershop/utils/nav_util.dart';
-import 'package:app_barbershop/widgets/default_button.dart';
+import 'package:app_master_airplanes/utils/nav_util.dart';
+import 'package:app_master_airplanes/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatelessWidget {

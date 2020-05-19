@@ -1,4 +1,4 @@
-import 'package:app_barbershop/domain/airplane.dart';
+import 'package:app_master_airplanes/domain/airplane.dart';
 import 'package:flutter/material.dart';
 
 class AirplaneDetail extends StatefulWidget {

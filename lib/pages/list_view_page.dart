@@ -1,6 +1,6 @@
-import 'package:app_barbershop/domain/airplane.dart';
-import 'package:app_barbershop/pages/airplane_detail.dart';
-import 'package:app_barbershop/utils/nav_util.dart';
+import 'package:app_master_airplanes/domain/airplane.dart';
+import 'package:app_master_airplanes/pages/airplane_detail.dart';
+import 'package:app_master_airplanes/utils/nav_util.dart';
 import 'package:flutter/material.dart';
 
 class ListViewPage extends StatefulWidget {
