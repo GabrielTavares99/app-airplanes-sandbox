@@ -16,3 +16,5 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 https://pub.dev
+
+Icons made by <a href="https://www.flaticon.com/free-icon/globe_744502?term=airplane&page=1&position=18" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
