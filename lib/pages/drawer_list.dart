@@ -6,10 +6,15 @@ class DrawerList extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          SizedBox(
-            height: 35,
+          UserAccountsDrawerHeader(
+            accountName: Text("Anonymous"),
+            accountEmail: Text("anonymous@gmail.com"),
+            currentAccountPicture: CircleAvatar(
+//              backgroundImage: AssetImage("assets/images/hair/airplane1.jpg"),
+              backgroundImage: NetworkImage(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQu9W74tCsvU8cGdGSU5wlgoDhmyn1L6v3Hk44FTjwTIzrTxBdV&usqp=CAU"),
+            ),
           ),
-          _img(),
           ListTile(
             leading: Icon(Icons.airplanemode_active),
             title: Text("Militar"),
@@ -32,15 +37,6 @@ class DrawerList extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  _img() {
-    return Image.asset(
-      "assets/images/hair/airplane1.jpg",
-      width: 60,
-      height: 70,
-      fit: BoxFit.contain,
     );
   }
 }
