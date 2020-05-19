@@ -12,6 +12,26 @@ class SecondPage extends StatelessWidget {
         ),
       ),
       body: _body(context),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            child: Icon(Icons.favorite),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.favorite_border),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -35,5 +55,9 @@ class SecondPage extends StatelessWidget {
 
   _onClickBackButton(BuildContext context) {
     pop(context);
+  }
+
+  void _onClickFab() {
+    print("FAB");
   }
 }
