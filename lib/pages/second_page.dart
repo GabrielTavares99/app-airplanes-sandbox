@@ -17,15 +17,18 @@ class SecondPage extends StatelessWidget {
         children: <Widget>[
           FloatingActionButton(
             child: Icon(Icons.favorite),
+            heroTag: "1",
             onPressed: () {
               _onClickFab();
             },
           ),
           SizedBox(
             width: 8,
+            height: 8,
           ),
           FloatingActionButton(
             child: Icon(Icons.favorite_border),
+            heroTag: "2",
             onPressed: () {
               _onClickFab();
             },
