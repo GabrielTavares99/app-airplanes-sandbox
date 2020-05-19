@@ -36,6 +36,15 @@ class DrawerList extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text("Favorites"),
+              subtitle: Text("Your favorites airplanes"),
+              onTap: () {
+                print("ITEM 2");
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
