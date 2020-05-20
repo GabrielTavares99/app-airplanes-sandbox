@@ -1,3 +1,5 @@
+import 'package:app_master_airplanes/pages/login_page.dart';
+import 'package:app_master_airplanes/utils/nav_util.dart';
 import 'package:flutter/material.dart';
 
 class DrawerList extends StatelessWidget {
@@ -45,6 +47,13 @@ class DrawerList extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Exit"),
+              onTap: () {
+                push(context, LoginPage());
+              },
+            )
           ],
         ),
       ),

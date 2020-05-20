@@ -8,9 +8,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _tUsername = TextEditingController();
+  final _tUsername = TextEditingController(text: "gabriel@gmail.com");
+  final _tPassword = TextEditingController(text: "123123");
 
-  final _tPassword = TextEditingController();
+  final _focusPassword = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -36,20 +37,22 @@ class _LoginPageState extends State<LoginPage> {
             "Type your username",
             controller: _tUsername,
             validator: _validateUsername,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            nextFocus: _focusPassword,
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           _formField(
             "Password",
             "Type your password",
             controller: _tPassword,
             obscureContent: true,
             validator: _validatePassword,
+            keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.done,
+            focusNode: _focusPassword,
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           _buttonLogin(
             _onClickLogin,
           ),
@@ -78,11 +81,23 @@ class _LoginPageState extends State<LoginPage> {
     controller,
     bool obscureContent: false,
     FormFieldValidator<String> validator,
+    TextInputType keyboardType,
+    TextInputAction textInputAction,
+    FocusNode focusNode,
+    FocusNode nextFocus,
   }) {
     return TextFormField(
       controller: controller,
       obscureText: obscureContent,
       validator: validator,
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      // ENTER BUTTON
+      focusNode: focusNode,
+      onFieldSubmitted: (String text) {
+        if (nextFocus != null)
+          FocusScope.of(context).requestFocus(_focusPassword);
+      },
       style: TextStyle(
         color: Colors.grey,
       ),

@@ -10,13 +10,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
           title: Text(
-        "Airplanes",
-      )),
-      body: _body(context),
-      drawer: DrawerList(),
+            "Airplanes",
+          ),
+        ),
+        body: _body(context),
+        drawer: DrawerList(),
+      ),
     );
   }
 
@@ -25,6 +29,7 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Colors.green,
       width: size.width,
+      height: size.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -89,8 +94,8 @@ class HomePage extends StatelessWidget {
     return Image.asset(
       "assets/images/hair/airplane" + num.toString() + ".jpg",
       width: 300,
-      height: 300,
-      fit: BoxFit.contain,
+      height: 200,
+      fit: BoxFit.cover,
     );
   }
 
