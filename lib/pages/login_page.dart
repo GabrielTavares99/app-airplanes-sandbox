@@ -16,44 +16,11 @@ class LoginPage extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16),
       children: <Widget>[
-        TextFormField(
-          style: TextStyle(
-            color: Colors.orange,
-          ),
-          decoration: InputDecoration(
-            labelText: "Login",
-            labelStyle: TextStyle(
-              color: Colors.pink,
-              fontSize: 30,
-            ),
-            hintStyle: TextStyle(
-              color: Colors.blue,
-              fontSize: 20,
-            ),
-            hintText: "Type your username",
-          ),
-        ),
+        _formField("Username", "Type your username"),
         SizedBox(
           height: 20,
         ),
-        TextFormField(
-          obscureText: true,
-          style: TextStyle(
-            color: Colors.orange,
-          ),
-          decoration: InputDecoration(
-            labelText: "Password",
-            labelStyle: TextStyle(
-              color: Colors.pink,
-              fontSize: 30,
-            ),
-            hintStyle: TextStyle(
-              color: Colors.blue,
-              fontSize: 20,
-            ),
-            hintText: "Type your password",
-          ),
-        ),
+        _formField("Password", "Type your password", obscureContent: true),
         SizedBox(
           height: 20,
         ),
@@ -67,6 +34,27 @@ class LoginPage extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  TextFormField _formField(String label, hint, {bool obscureContent: false}) {
+    return TextFormField(
+      obscureText: obscureContent,
+      style: TextStyle(
+        color: Colors.grey,
+      ),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(
+          color: Colors.grey,
+          fontSize: 30,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.blue,
+          fontSize: 20,
+        ),
+        hintText: hint,
+      ),
     );
   }
 
