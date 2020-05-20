@@ -1,6 +1,5 @@
+import 'package:app_master_airplanes/pages/login_page.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/home_page.dart';
 
 void main() {
   runApp(BarberShop());
@@ -12,21 +11,10 @@ class BarberShop extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //remove debugger banner
       theme: ThemeData(
-        primaryColor: Colors.black,
-      ),
-      home: HomePage(),
-    );
-  }
-
-  home() {
-    return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        "Baby Barbershop",
-      )),
-      body: Container(
-        color: Colors.lightBlue,
-      ),
+          primaryColor: Colors.black,
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.greenAccent),
+      home: LoginPage(),
     );
   }
 }

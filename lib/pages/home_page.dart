@@ -1,9 +1,9 @@
-import 'package:app_master_airplanes/pages/drawer_list.dart';
 import 'package:app_master_airplanes/pages/list_view_page.dart';
 import 'package:app_master_airplanes/pages/second_page.dart';
 import 'package:app_master_airplanes/pages/third_page.dart';
 import 'package:app_master_airplanes/utils/nav_util.dart';
 import 'package:app_master_airplanes/widgets/default_button.dart';
+import 'package:app_master_airplanes/widgets/drawer_list.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
