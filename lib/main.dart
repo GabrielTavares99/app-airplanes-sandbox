@@ -11,9 +11,10 @@ class BarberShop extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //remove debugger banner
       theme: ThemeData(
-          primaryColor: Colors.black,
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: Colors.greenAccent),
+        primaryColor: Colors.black,
+        brightness: Brightness.dark,
+//        scaffoldBackgroundColor: Colors.white10,
+      ),
       home: LoginPage(),
     );
   }
