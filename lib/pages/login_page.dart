@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  final _tUsername = TextEditingController();
+  final _tPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,33 +19,44 @@ class LoginPage extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16),
       children: <Widget>[
-        _formField("Username", "Type your username"),
+        _formField(
+          "Username",
+          "Type your username",
+          controller: _tUsername,
+        ),
         SizedBox(
           height: 20,
         ),
-        _formField("Password", "Type your password", obscureContent: true),
+        _formField(
+          "Password",
+          "Type your password",
+          controller: _tPassword,
+          obscureContent: true,
+        ),
         SizedBox(
           height: 20,
         ),
-        _buttonLogin(context),
+        _buttonLogin(
+          _onClickLogin,
+        ),
       ],
     );
   }
 
-  Container _buttonLogin(BuildContext context) {
+  _buttonLogin(Function onPressed) {
     return Container(
       height: 40,
       child: RaisedButton(
         child: Text("Login"),
-        onPressed: () => {
-          _onClickLoginButton(context),
-        },
+        onPressed: onPressed,
       ),
     );
   }
 
-  TextFormField _formField(String label, hint, {bool obscureContent: false}) {
+  TextFormField _formField(String label, hint,
+      {controller, bool obscureContent: false}) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureContent,
       style: TextStyle(
         color: Colors.grey,
@@ -62,7 +76,9 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  _onClickLoginButton(BuildContext context) {
-    print("login");
+  _onClickLogin() {
+    String username = _tUsername.text;
+    String password = _tPassword.text;
+    print("USERNAME:: $username PASSWORD:: $password");
   }
 }
