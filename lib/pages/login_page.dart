@@ -24,16 +24,20 @@ class LoginPage extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        Container(
-          height: 40,
-          child: RaisedButton(
-            child: Text("Login"),
-            onPressed: () => {
-              _onClickLoginButton(context),
-            },
-          ),
-        )
+        _buttonLogin(context),
       ],
+    );
+  }
+
+  Container _buttonLogin(BuildContext context) {
+    return Container(
+      height: 40,
+      child: RaisedButton(
+        child: Text("Login"),
+        onPressed: () => {
+          _onClickLoginButton(context),
+        },
+      ),
     );
   }
 
