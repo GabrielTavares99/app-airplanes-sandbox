@@ -9,7 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _tUsername = TextEditingController(text: "gabriel@gmail.com");
+  final _tUsername = TextEditingController(text: "gabs@dev");
   final _tPassword = TextEditingController(text: "123123");
 
   final _focusPassword = FocusNode();
@@ -76,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
     String password = _tPassword.text;
     print("USERNAME:: $username PASSWORD:: $password");
 
-    var loginOk = await LoginApi.login(username, password);
-    if (loginOk)
+    var user = await LoginApi.login(username, password);
+    if (user != null)
       print("SUCCESS");
     else
       print("ERROR");
