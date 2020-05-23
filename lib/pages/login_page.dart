@@ -1,5 +1,4 @@
-import 'package:app_master_airplanes/pages/home_page.dart';
-import 'package:app_master_airplanes/utils/nav_util.dart';
+import 'package:app_master_airplanes/api/login_api.dart';
 import 'package:app_master_airplanes/widgets/default_text_field.dart';
 import 'package:app_master_airplanes/widgets/form_button.dart';
 import 'package:flutter/material.dart';
@@ -29,37 +28,40 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _body(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: ListView(
-        padding: EdgeInsets.all(16),
-        children: <Widget>[
-          DefaultTextField(
-            "Username",
-            hint: "Type your username",
-            controller: _tUsername,
-            validator: _validateUsername,
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            nextFocus: _focusPassword,
-          ),
-          SizedBox(height: 20),
-          DefaultTextField(
-            "Password",
-            hint: "Type your password",
-            controller: _tPassword,
-            obscureText: true,
-            validator: _validatePassword,
-            keyboardType: TextInputType.number,
-            textInputAction: TextInputAction.done,
-            focusNode: _focusPassword,
-          ),
-          SizedBox(height: 20),
-          FormButton(
-            "Login",
-            onPressed: _onClickLogin,
-          ),
-        ],
+    return Container(
+      margin: EdgeInsets.only(top: 16),
+      child: Form(
+        key: _formKey,
+        child: ListView(
+          padding: EdgeInsets.all(16),
+          children: <Widget>[
+            DefaultTextField(
+              "Username",
+              hint: "Type your username",
+              controller: _tUsername,
+              validator: _validateUsername,
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              nextFocus: _focusPassword,
+            ),
+            SizedBox(height: 20),
+            DefaultTextField(
+              "Password",
+              hint: "Type your password",
+              controller: _tPassword,
+              obscureText: true,
+              validator: _validatePassword,
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.done,
+              focusNode: _focusPassword,
+            ),
+            SizedBox(height: 20),
+            FormButton(
+              "Login",
+              onPressed: _onClickLogin,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,12 +70,18 @@ class _LoginPageState extends State<LoginPage> {
     return text.isEmpty ? "Field must not be empty..." : null;
   }
 
-  _onClickLogin() {
+  _onClickLogin() async {
     if (!_formKey.currentState.validate()) return;
     String username = _tUsername.text;
     String password = _tPassword.text;
     print("USERNAME:: $username PASSWORD:: $password");
-    push(context, HomePage());
+
+    var loginOk = await LoginApi.login(username, password);
+    if (loginOk)
+      print("SUCCESS");
+    else
+      print("ERROR");
+//    push(context, HomePage());
   }
 
   String _validatePassword(String text) {
