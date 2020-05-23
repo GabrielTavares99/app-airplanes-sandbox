@@ -1,5 +1,7 @@
 import 'package:app_master_airplanes/pages/home_page.dart';
 import 'package:app_master_airplanes/utils/nav_util.dart';
+import 'package:app_master_airplanes/widgets/default_text_field.dart';
+import 'package:app_master_airplanes/widgets/form_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -32,9 +34,9 @@ class _LoginPageState extends State<LoginPage> {
       child: ListView(
         padding: EdgeInsets.all(16),
         children: <Widget>[
-          _formField(
+          DefaultTextField(
             "Username",
-            "Type your username",
+            hint: "Type your username",
             controller: _tUsername,
             validator: _validateUsername,
             keyboardType: TextInputType.emailAddress,
@@ -42,19 +44,20 @@ class _LoginPageState extends State<LoginPage> {
             nextFocus: _focusPassword,
           ),
           SizedBox(height: 20),
-          _formField(
+          DefaultTextField(
             "Password",
-            "Type your password",
+            hint: "Type your password",
             controller: _tPassword,
-            obscureContent: true,
+            obscureText: true,
             validator: _validatePassword,
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.done,
             focusNode: _focusPassword,
           ),
           SizedBox(height: 20),
-          _buttonLogin(
-            _onClickLogin,
+          FormButton(
+            "Login",
+            onPressed: _onClickLogin,
           ),
         ],
       ),
@@ -63,57 +66,6 @@ class _LoginPageState extends State<LoginPage> {
 
   String _validateUsername(String text) {
     return text.isEmpty ? "Field must not be empty..." : null;
-  }
-
-  _buttonLogin(Function onPressed) {
-    return Container(
-      height: 40,
-      child: RaisedButton(
-        child: Text("Login"),
-        onPressed: onPressed,
-      ),
-    );
-  }
-
-  TextFormField _formField(
-    String label,
-    hint, {
-    controller,
-    bool obscureContent: false,
-    FormFieldValidator<String> validator,
-    TextInputType keyboardType,
-    TextInputAction textInputAction,
-    FocusNode focusNode,
-    FocusNode nextFocus,
-  }) {
-    return TextFormField(
-      controller: controller,
-      obscureText: obscureContent,
-      validator: validator,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      // ENTER BUTTON
-      focusNode: focusNode,
-      onFieldSubmitted: (String text) {
-        if (nextFocus != null)
-          FocusScope.of(context).requestFocus(_focusPassword);
-      },
-      style: TextStyle(
-        color: Colors.grey,
-      ),
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(
-          color: Colors.grey,
-          fontSize: 30,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.blue,
-          fontSize: 20,
-        ),
-        hintText: hint,
-      ),
-    );
   }
 
   _onClickLogin() {
