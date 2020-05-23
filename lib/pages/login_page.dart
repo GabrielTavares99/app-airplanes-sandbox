@@ -1,4 +1,5 @@
 import 'package:app_master_airplanes/api/login_api.dart';
+import 'package:app_master_airplanes/utils/notification_util.dart';
 import 'package:app_master_airplanes/widgets/default_text_field.dart';
 import 'package:app_master_airplanes/widgets/form_button.dart';
 import 'package:flutter/material.dart';
@@ -76,11 +77,15 @@ class _LoginPageState extends State<LoginPage> {
     String password = _tPassword.text;
     print("USERNAME:: $username PASSWORD:: $password");
 
-    var user = await LoginApi.login(username, password);
-    if (user != null)
+    var apiResponse = await LoginApi.login(username, password);
+    if (apiResponse.ok)
       print("SUCCESS");
     else
-      print("ERROR");
+      NotificationUtil.simpleDialog(
+        "Ops...",
+        context,
+        message: apiResponse.message,
+      );
 //    push(context, HomePage());
   }
 
