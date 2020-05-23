@@ -41,6 +41,9 @@ class DefaultTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         labelText: _label,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
         labelStyle: TextStyle(
           color: Colors.grey,
           fontSize: 30,
