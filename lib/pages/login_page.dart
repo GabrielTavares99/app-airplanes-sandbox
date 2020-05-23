@@ -1,8 +1,11 @@
 import 'package:app_master_airplanes/api/login_api.dart';
+import 'package:app_master_airplanes/utils/nav_util.dart';
 import 'package:app_master_airplanes/utils/notification_util.dart';
 import 'package:app_master_airplanes/widgets/default_text_field.dart';
 import 'package:app_master_airplanes/widgets/form_button.dart';
 import 'package:flutter/material.dart';
+
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final _tPassword = TextEditingController(text: "123123");
 
   final _focusPassword = FocusNode();
+  bool _showProgress = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -57,13 +61,18 @@ class _LoginPageState extends State<LoginPage> {
               focusNode: _focusPassword,
             ),
             SizedBox(height: 20),
-            FormButton(
-              "Login",
-              onPressed: _onClickLogin,
-            ),
+            _showButtonOrProgress(),
           ],
         ),
       ),
+    );
+  }
+
+  _showButtonOrProgress() {
+    return FormButton(
+      "Login",
+      showProgress: _showProgress,
+      onPressed: _onClickLogin,
     );
   }
 
@@ -77,16 +86,25 @@ class _LoginPageState extends State<LoginPage> {
     String password = _tPassword.text;
     print("USERNAME:: $username PASSWORD:: $password");
 
+    setState(() {
+      _showProgress = true;
+    });
+
     var apiResponse = await LoginApi.login(username, password);
-    if (apiResponse.ok)
+
+    if (apiResponse.ok) {
       print("SUCCESS");
-    else
+      push(context, HomePage(), replace: true);
+    } else
       NotificationUtil.simpleDialog(
         "Ops...",
         context,
         message: apiResponse.message,
       );
-//    push(context, HomePage());
+
+    setState(() {
+      _showProgress = false;
+    });
   }
 
   String _validatePassword(String text) {

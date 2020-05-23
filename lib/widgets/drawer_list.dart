@@ -51,7 +51,7 @@ class DrawerList extends StatelessWidget {
               leading: Icon(Icons.exit_to_app),
               title: Text("Exit"),
               onTap: () {
-                push(context, LoginPage());
+                push(context, LoginPage(), replace: true);
               },
             )
           ],
