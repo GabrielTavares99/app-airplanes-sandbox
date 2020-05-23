@@ -7,6 +7,8 @@ import 'package:app_master_airplanes/widgets/drawer_list.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'list_view_service.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -75,6 +77,10 @@ class HomePage extends StatelessWidget {
                 "Page 3",
                 onPressed: () => _onClickNavigator(context, ThirdPage()),
               ),
+              DefaultButton(
+                "SERVICE",
+                onPressed: () => _onClickNavigator(context, ListViewService()),
+              )
             ],
           ),
           Row(
@@ -95,7 +101,7 @@ class HomePage extends StatelessWidget {
       "assets/images/hair/airplane" + num.toString() + ".jpg",
       width: 300,
       height: 200,
-      fit: BoxFit.cover,
+      fit: BoxFit.fill,
     );
   }
 

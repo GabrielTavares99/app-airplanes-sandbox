@@ -3,6 +3,10 @@ class ApiResponse<T> {
   String message;
   T result;
 
+  bool hasError() {
+    return !ok;
+  }
+
   ApiResponse.ok(this.result) {
     ok = true;
   }
